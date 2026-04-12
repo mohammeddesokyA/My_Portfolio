@@ -25,22 +25,23 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-slate-900/80 backdrop-blur-md shadow-lg py-3'
+        scrolled || isOpen
+          ? 'bg-slate-900/90 backdrop-blur-md shadow-lg py-3'
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        {/* اللوجو أو اسمك */}
+      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center relative z-50">
+        {/* اللوجو */}
         <motion.a
           href="#home"
+          onClick={() => setIsOpen(false)} // عشان لو دوست على اللوجو وإنت فاتح القائمة تقفل
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-bold text-white tracking-wider"
         >
           <span className="text-emerald-500">&lt;</span>
-Mohammed 
-<span className="text-emerald-500"> /&gt;</span>
+          Mohammed 
+          <span className="text-emerald-500"> /&gt;</span>
         </motion.a>
 
         {/* قائمة الديسكتوب */}
@@ -60,13 +61,13 @@ Mohammed
           ))}
         </div>
 
-        {/* زرار الموبايل (Hamburger Icon) */}
+        {/* زرار الموبايل */}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-300 hover:text-white focus:outline-none"
+            className="text-gray-300 hover:text-emerald-500 focus:outline-none p-2 transition-colors"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -81,18 +82,19 @@ Mohammed
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-slate-900 border-t border-slate-800"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 md:hidden shadow-2xl"
           >
-            <div className="flex flex-col px-6 py-4 space-y-4">
+            <div className="flex flex-col px-6 py-4">
               {navLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.href}
-                  onClick={() => setIsOpen(false)} // يقفل القائمة لما تختار لينك
-                  className="text-gray-300 hover:text-emerald-500 font-medium"
+                  onClick={() => setIsOpen(false)} // بيقفل القائمة فوراً
+                  className="text-gray-300 hover:text-emerald-500 font-medium text-lg block py-3 border-b border-slate-800/50 last:border-0"
                 >
                   {link.name}
                 </a>
