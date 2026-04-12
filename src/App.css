@@ -1,0 +1,8 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* اختيار إضافي: عشان السكرول ما يبقاش مكتوم تحت النافبار */
+section {
+  scroll-margin-top: 80px; 
+}
