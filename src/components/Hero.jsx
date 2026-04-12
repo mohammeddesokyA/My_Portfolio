@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
-import Tilt from 'react-parallax-tilt'; // استدعينا مكتبة الـ 3D
-import myPhoto from '../assets/2.jpg'; // عدلنا دي عشان تستدعي الصورة الجديدة 2.jpg
+import Tilt from 'react-parallax-tilt'; 
+import myPhoto from '../assets/2.jpg'; 
+import { FiDownload } from 'react-icons/fi';
+// استيراد ملف السيفي كـ Asset لضمان عمل الرابط في كل البيئات
+import myCV from '../assets/Mohammed_Eldamaty_CV.pdf'; 
 
 export default function Hero() {
   return (
@@ -29,22 +32,31 @@ export default function Hero() {
             Crafting responsive and dynamic web applications. Building complete solutions ready for the real world.
           </motion.p>
           
-          <motion.div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
+          <motion.div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center md:justify-start">
             
-            {/* الزرار الأول: تأثير السائل واللمعان */}
+            {/* الزرار الأول: View Projects */}
             <a 
               href="#projects" 
-              className="relative group overflow-hidden px-8 py-3 rounded-full bg-slate-800 text-white font-medium transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]"
+              className="relative group overflow-hidden px-8 py-3 rounded-full bg-slate-800 text-white font-medium transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] flex items-center justify-center"
             >
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-600 via-blue-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></span>
               <span className="absolute -inset-full w-1/2 h-full block transform -skew-x-12 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 group-hover:animate-shine z-0"></span>
-              <span className="relative z-10 flex items-center justify-center gap-2">View Projects</span>
+              <span className="relative z-10">View Projects</span>
             </a>
 
-            {/* الزرار التاني */}
+            {/* الزرار التاني: Download CV */}
+            <a 
+              href={myCV} 
+              download="Mohammed_Eldamaty_CV.pdf"
+              className="px-8 py-3 rounded-full border border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-slate-900 font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(16,185,129,0.1)] hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+            >
+              <FiDownload className="text-lg" /> Download CV
+            </a>
+
+            {/* الزرار التالت: Contact Me */}
             <a 
               href="#contact" 
-              className="px-8 py-3 rounded-full bg-transparent border border-slate-600 hover:border-emerald-500 text-gray-300 hover:text-white font-medium transition-all hover:bg-emerald-500/10"
+              className="px-8 py-3 rounded-full bg-transparent border border-slate-600 hover:border-emerald-500 text-gray-300 hover:text-white font-medium transition-all hover:bg-emerald-500/10 flex items-center justify-center"
             >
               Contact Me
             </a>
@@ -59,8 +71,6 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* تأثير الـ Tilt و الـ Parallax على الصورة */}
-          {/* تأثير الـ Tilt و الـ Parallax على الصورة */}
           <Tilt 
             className="w-72 h-72 md:w-96 md:h-96" 
             tiltMaxAngleX={10} 
@@ -73,19 +83,14 @@ export default function Hero() {
             glareMaxOpacity={0.1}
             glareColor="#ffffff"
           >
-            {/* 1. قللنا الـ padding هنا لـ p-1 عشان المساحة تضيق */}
             <div className="relative w-full h-full bg-slate-900/60 backdrop-blur-md rounded-full overflow-hidden shadow-2xl flex items-center justify-center p-1">
               
-              {/* 2. الخط الدوار (اللون البنفسجي الفخم من غير تغبيش عشان يبان رفيع وحاد) */}
               <span className="absolute inset-0 z-0 animate-[spin_3s_linear_infinite]">
                 <span className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-violet-500 to-transparent"></span>
               </span>
 
-              {/* 3. كبرنا مساحة الصورة لـ 98% عشان تقفل على الخط وتخليه أرفع */}
               <div className="relative z-20 w-[98%] h-[98%] bg-slate-800 rounded-full overflow-hidden shadow-inner flex items-center justify-center">
-                
                 <img src={myPhoto} alt="Mohammed" className="object-cover w-full h-full rounded-full" />
-                
               </div>
             </div>
           </Tilt>

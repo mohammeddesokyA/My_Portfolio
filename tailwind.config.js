@@ -6,7 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      // الكود ده عشان لمعة الزرار تشتغل
       keyframes: {
         shine: {
           '100%': { left: '125%' },
