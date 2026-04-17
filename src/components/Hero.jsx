@@ -42,7 +42,7 @@ export default function Hero() {
 
             {/* ✅ زرار Download CV */}
             <a 
-              href="/My_Portfolio/CV.pdf"
+              href="/My_Portfolio/Mohammed_Eldamaty_CV.pdf"
               download
               className="px-8 py-3 rounded-full bg-transparent border border-emerald-500 hover:bg-emerald-500/10 text-emerald-400 hover:text-white font-medium transition-all flex items-center justify-center gap-2"
             >
