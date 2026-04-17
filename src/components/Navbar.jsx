@@ -39,7 +39,7 @@ export default function Navbar() {
           className="text-2xl font-bold text-white tracking-wider"
         >
           <span className="text-emerald-500">&lt;</span>
-Eldamaty
+Mohammed 
 <span className="text-emerald-500"> /&gt;</span>
         </motion.a>
 
